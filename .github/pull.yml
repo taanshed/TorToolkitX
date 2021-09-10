@@ -1,5 +1,5 @@
 version: "1"
 rules:
-  - base: master
-    upstream: XcodersHub:master    # change `wei` to the owner of upstream repo
+  - base: alpha
+    upstream: XcodersHub:alpha    # change `wei` to the owner of upstream repo
     mergeMethod: none
