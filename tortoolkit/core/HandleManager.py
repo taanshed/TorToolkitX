@@ -741,6 +741,7 @@ async def booted(client):
     for i in chats:
         try:
             #await client.send_message(i, "The bot is booted and is ready to use.")
+            torlog.info(f"The bot is booted and is ready to use {i}")
         except Exception as e:
             torlog.info(f"Not found the entity {i}")
 
