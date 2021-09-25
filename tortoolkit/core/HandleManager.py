@@ -457,7 +457,7 @@ async def set_password_zip(message):
             await message.reply(f"Cannot update the password this is not your download.")
 
 async def start_handler(event):
-    msg = "<b>Hello This is TorToolkitX an instance of</b> <a href='https://github.com/XcodersHub/TorToolkitX'>This Repo</a>. <b>Try the repo for yourself and dont forget to put a STAR and fork.</b>"
+    msg = "<b>Hello This is TorToolkitX an instance of</b> <a href='https://github.com/yash-dk/TorToolkit-Telegram/tree/alpha'>This Repo</a>. <b>Try the repo for yourself and dont forget to put a STAR and fork.</b>"
     await event.reply(msg, parse_mode="html")
 
 def progress_bar(percentage):
@@ -628,7 +628,7 @@ async def about_me(message):
         f"<b>Telethon Version</b>: {telever}\n"
         f"<b>Pyrogram Version</b>: {pyrover}\n"
         "<b>Created By</b>: @yaknight\n\n"
-        "<b>Modified</b>: @XcodersHub\n\n"
+        "<b>Modified</b>: @hoypolli\n\n"
         "<u>Currents Configs:-</u>\n\n"
         f"<b>Bot Uptime:-</b> {diff}\n"
         "<b>Torrent Download Engine:-</b> <code>qBittorrent [4.3.0 fix active]</code> \n"
@@ -740,7 +740,7 @@ async def booted(client):
     chats = get_val("ALD_USR")
     for i in chats:
         try:
-            await client.send_message(i, "The bot is booted and is ready to use.")
+            #await client.send_message(i, "The bot is booted and is ready to use.")
         except Exception as e:
             torlog.info(f"Not found the entity {i}")
 
