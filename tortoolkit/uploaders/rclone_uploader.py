@@ -183,8 +183,8 @@ class RcloneUploader(BaseTask):
                         folder_link = get_val("ONEDRIVE_BASE_FOLDER_URL") +  parse.quote("/"+os.path.basename(path))
                     else:
                         gid = await self.get_glink(dest_drive,dest_base,os.path.basename(path),conf_path)
-                        ids = gid[1].split("#")
-                        folder_link = "https://onedrive.live.com/?cid={}&id={}".format(ids[0], ids[1])
+                        #ids = gid[1].split("#")
+                        folder_link = get_val("ONEDRIVE_INDEX_URL").strip("/")
                     od_index = get_val("ONEDRIVE_INDEX_URL")
                     index_link = None
 
@@ -276,8 +276,8 @@ class RcloneUploader(BaseTask):
 
                     else:
                         gid = await self.get_glink(dest_drive,dest_base,os.path.basename(path),conf_path)
-                        ids = gid[1].split("#")
-                        file_link = "https://onedrive.live.com/?cid={}&id={}".format(ids[0], ids[1])
+                        #ids = gid[1].split("#")
+                        file_link = get_val("ONEDRIVE_INDEX_URL").strip("/")
 
                     od_index = get_val("ONEDRIVE_INDEX_URL")
                     index_link = None
