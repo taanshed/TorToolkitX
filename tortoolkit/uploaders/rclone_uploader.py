@@ -24,7 +24,7 @@ from ..status.status_manager import StatusManager
 from ..database.dbhandler import TorToolkitDB
 from ..utils.misc_utils import clear_stuff
 from ..utils.zip7_utils import extract_archive
-
+from ..utils import Human_Format
 
 torlog = logging.getLogger(__name__)
 
@@ -92,7 +92,7 @@ class RcloneUploader(BaseTask):
         
         
         ul_size = calculate_size(path)
-        # this function will need a driver for him :o
+        ul_size = Human_Format.human_readable_bytes(ul_size) # this function will need a driver for him :o
 
         if not os.path.exists(path):
             torlog.info(f"Returning none cuz the path {path} not found")
