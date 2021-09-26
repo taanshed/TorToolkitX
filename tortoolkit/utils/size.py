@@ -5,7 +5,7 @@ import logging
 import os
 torlog = logging.getLogger(__name__)
 
-def calculate_size(path):
+def calculate_size_notused(path):
     if path is not None:
         try:
             if os.path.isdir(path):
@@ -16,7 +16,30 @@ def calculate_size(path):
             torlog.warning("Size Calculation Failed.")
             return 0
     else:
-        return 0  
+        return 0
+
+    
+def calculate_size(directory):
+    """Returns the `directory` size in bytes."""
+    total = 0
+    try:
+        # print("[+] Getting the size of", directory)
+        for entry in os.scandir(directory):
+            if entry.is_file():
+                # if it's a file, use stat() function
+                total += entry.stat().st_size
+            elif entry.is_dir():
+                # if it's a directory, recursively call this function
+                total += calculate_size(entry.path)
+    except NotADirectoryError:
+        # if `directory` isn't a directory, get the file size then
+        return os.path.getsize(directory)
+    except PermissionError:
+        torlog.warning("Size Calculation Failed.")
+        # if for whatever reason we can't open the folder, return 0
+        return 0
+    return total
+
 
 def get_size_fl(start_path = '.'):
     total_size = 0
