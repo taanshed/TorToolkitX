@@ -171,7 +171,7 @@ class RcloneUploader(BaseTask):
                     index_link = None
 
                     if gd_index:
-                        index_link = "{}/{}/".format(gd_index.strip("/"), gid[1])
+                        index_link = "{}/{}/".format(("".join([gd_index.strip("/"), "/", dest_base])).strip("/"), gid[1])
                         index_link = requote_uri(index_link)
                         torlog.info("index link "+str(index_link))
                     
@@ -189,7 +189,7 @@ class RcloneUploader(BaseTask):
                     index_link = None
 
                     if od_index:
-                        index_link = "{}/{}/".format(od_index.strip("/"), parse.quote(os.path.basename(path)))
+                        index_link = "{}/{}/".format(("".join([od_index.strip("/"), "/", dest_base])).strip("/"), parse.quote(os.path.basename(path)))
                         index_link = requote_uri(index_link)
                         torlog.info("index link "+str(index_link))
                     self._error_reason = "Uploaded Size:- {}\nUPLOADED FOLDER :-<code>{}</code>\nTo OneDrive.".format(ul_size, os.path.basename(path))
@@ -259,7 +259,7 @@ class RcloneUploader(BaseTask):
                     index_link = None
 
                     if gd_index:
-                        index_link = "{}/{}".format(gd_index.strip("/"), gid[1])
+                        index_link = "{}/{}/".format(("".join([gd_index.strip("/"), "/", dest_base])).strip("/"), gid[1])
                         index_link = requote_uri(index_link)
                         torlog.info("index link "+str(index_link))
                         
@@ -283,7 +283,7 @@ class RcloneUploader(BaseTask):
                     index_link = None
 
                     if od_index:
-                        index_link = "{}/{}".format(od_index.strip("/"), parse.quote(os.path.basename(path)))
+                        index_link = "{}/{}/".format(("".join([od_index.strip("/"), "/", dest_base])).strip("/"), parse.quote(os.path.basename(path)))
                         index_link = requote_uri(index_link)
                         torlog.info("index link "+str(index_link))
                     
