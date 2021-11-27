@@ -1,8 +1,8 @@
 version: "1"
 rules:
   - base: master
-    upstream: XcodersHub:master    # change `wei` to the owner of upstream repo
+    upstream: KangersHub:master    # change `wei` to the owner of upstream repo
     mergeMethod: none
   - base: alpha
-    upstream: XcodersHub:alpha
+    upstream: KangersHub:alpha
     mergeMethod: none
