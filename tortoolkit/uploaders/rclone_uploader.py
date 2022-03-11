@@ -512,7 +512,7 @@ class RcloneController:
                 [KeyboardButtonUrl("Drive URL", drive_link)]
             ]
             if index_link is not None:
-                buttons.append([KeyboardButtonUrl("Index URL", index_link, "/")])
+                buttons.append([KeyboardButtonUrl("Index URL", index_link)])
             
             await self._update_msg.delete()
             await self._user_msg.reply(self._rclone_up.get_error_reason(), buttons=buttons, parse_mode="html")
