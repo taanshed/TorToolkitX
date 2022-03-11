@@ -184,12 +184,12 @@ class RcloneUploader(BaseTask):
                     else:
                         gid = await self.get_glink(dest_drive,dest_base,os.path.basename(path),conf_path)
                         #ids = gid[1].split("#")
-                        folder_link = get_val("ONEDRIVE_INDEX_URL").strip("/")
+                        folder_link = "".join([get_val("ONEDRIVE_INDEX_URL").strip("/"), "/", dest_drive]) #get_val("ONEDRIVE_INDEX_URL").strip("/")
                     od_index = get_val("ONEDRIVE_INDEX_URL")
                     index_link = None
 
                     if od_index:
-                        index_link = "{}/{}/".format(("".join([od_index.strip("/"), "/", dest_base])).strip("/"), parse.quote(os.path.basename(path)))
+                        index_link = "{}/{}/".format(("".join([od_index.strip("/"), "/", dest_drive, "/", dest_base])).strip("/"), parse.quote(os.path.basename(path)))
                         index_link = requote_uri(index_link)
                         torlog.info("index link "+str(index_link))
                     self._error_reason = "Uploaded Size:- {}\nUPLOADED FOLDER :-<code>{}</code>\nTo OneDrive.".format(ul_size, os.path.basename(path))
@@ -277,13 +277,13 @@ class RcloneUploader(BaseTask):
                     else:
                         gid = await self.get_glink(dest_drive,dest_base,os.path.basename(path),conf_path)
                         #ids = gid[1].split("#")
-                        file_link = get_val("ONEDRIVE_INDEX_URL").strip("/")
+                        file_link = "".join([get_val("ONEDRIVE_INDEX_URL").strip("/"), "/", dest_drive]) #get_val("ONEDRIVE_INDEX_URL").strip("/")
 
                     od_index = get_val("ONEDRIVE_INDEX_URL")
                     index_link = None
 
                     if od_index:
-                        index_link = "{}/{}/".format(("".join([od_index.strip("/"), "/", dest_base])).strip("/"), parse.quote(os.path.basename(path)))
+                        index_link = "{}/{}/".format(("".join([od_index.strip("/"), "/", dest_drive, "/", dest_base])).strip("/"), parse.quote(os.path.basename(path)))
                         index_link = requote_uri(index_link)
                         torlog.info("index link "+str(index_link))
                     
@@ -512,7 +512,7 @@ class RcloneController:
                 [KeyboardButtonUrl("Drive URL", drive_link)]
             ]
             if index_link is not None:
-                buttons.append([KeyboardButtonUrl("Index URL", index_link)])
+                buttons.append([KeyboardButtonUrl("Index URL", dest_drive, "/")])
             
             await self._update_msg.delete()
             await self._user_msg.reply(self._rclone_up.get_error_reason(), buttons=buttons, parse_mode="html")
