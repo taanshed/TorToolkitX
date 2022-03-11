@@ -39,7 +39,7 @@ class TaskSequence:
             else:
                 await self._user_msg.reply("No Link Found.")
                 return
-            
+                
         if self._task_type == self.LEECH:
             choices = await self.get_leech_choices()
             
